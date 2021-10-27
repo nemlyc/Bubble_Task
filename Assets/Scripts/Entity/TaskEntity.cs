@@ -3,6 +3,7 @@ public class TaskEntity
 {
     public string ID { get; private set; }
     public string UserID { get; set; }
+    public bool IsCompleted { get; set; }
     public int Priority { get; set; }
     public string Desccription { get; set; }
     public string[] NodeIDs { get; set; }
