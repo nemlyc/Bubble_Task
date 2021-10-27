@@ -15,6 +15,7 @@ public class TaskModel
         TaskEntity entity = new TaskEntity
         {
             UserID = userID.ID,
+            IsCompleted = false,
             Priority = priority,
             Desccription = description,
             NodeIDs = node
@@ -58,8 +59,51 @@ public class TaskModel
         ReadTask(ID).NodeIDs = node;
     }
 
+    public void CompleteTask(string ID)
+    {
+        /*
+         * 子ノードが消化されているか確認。
+         * 子ノードが消化されていない場合：すべて消化
+         *                               消化しない
+         */
+
+        TaskEntity targetEntity = ReadTask(ID);
+
+        /* Todo: サブノート実装時有効化
+        if (targetEntity.NodeIDs != null)
+        {
+            var isCompleted = CheckSubNodeCompleted(targetEntity);
+            if (!isCompleted)
+            {
+                //終わっていない時。
+            }
+        }
+        */
+
+        targetEntity.IsCompleted = true;
+    }
+
     public void DeleteTask(string key)
     {
         taskDictionary.Remove(key);
+    }
+
+    /// <summary>
+    /// サブノートタスクが完了しているか確かめる。
+    /// </summary>
+    /// <param name="parentTask">親タスク</param>
+    /// <returns></returns>
+    bool CheckSubNodeCompleted(TaskEntity parentTask)
+    {
+        bool isSubNodeCompleted = false;
+        foreach (var item in parentTask.NodeIDs)
+        {
+            // サブタスクが完了している時true
+            if (ReadTask(item).IsCompleted)
+            {
+                isSubNodeCompleted = true;
+            }
+        }
+        return isSubNodeCompleted;
     }
 }
