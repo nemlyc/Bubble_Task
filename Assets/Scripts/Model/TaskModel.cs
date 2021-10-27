@@ -10,7 +10,7 @@ public class TaskModel
         taskDictionary = new Dictionary<string, TaskEntity>();
     }
 
-    public void CreateTask(UserEntity userID, int priority, string description, string[] node)
+    public void CreateTask(UserEntity userID, int priority, string description, List<string> node)
     {
         TaskEntity entity = new TaskEntity
         {
@@ -22,6 +22,16 @@ public class TaskModel
         };
 
         taskDictionary.Add(entity.ID, entity);
+    }
+
+    public void AddSubTask(string parentID, string childID)
+    {
+        var parent = ReadTask(parentID);
+        if (parent.NodeIDs == null)
+        {
+            parent.NodeIDs = new List<string>();
+        }
+        parent.NodeIDs.Add(childID);
     }
 
     public Dictionary<string, TaskEntity> ReadTaskDictionary()
@@ -54,7 +64,7 @@ public class TaskModel
         ReadTask(ID).Desccription = description;
     }
 
-    public void UpdateNodeIDs(string ID, string[] node)
+    public void UpdateNodeIDs(string ID, List<string> node)
     {
         ReadTask(ID).NodeIDs = node;
     }
@@ -69,7 +79,6 @@ public class TaskModel
 
         TaskEntity targetEntity = ReadTask(ID);
 
-        /* Todo: サブノート実装時有効化
         if (targetEntity.NodeIDs != null)
         {
             var isCompleted = CheckSubNodeCompleted(targetEntity);
@@ -77,10 +86,15 @@ public class TaskModel
             {
                 //終わっていない時。
             }
+            else
+            {
+                targetEntity.IsCompleted = true;
+            }
         }
-        */
-
-        targetEntity.IsCompleted = true;
+        else
+        {
+            targetEntity.IsCompleted = true;
+        }
     }
 
     public void DeleteTask(string key)
