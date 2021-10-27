@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+using System.Linq;
 
 public class TaskModelTest
 {
+    UserEntity user = new UserEntity();
+
     [Test]
     public void CreateTask()
     {
-        var model = CreateModel();
+        var model = CreateModel(user);
 
         var dic = model.ReadTaskDictionary();
         var keys = dic.Keys;
@@ -25,9 +28,25 @@ public class TaskModelTest
     }
 
     [Test]
+    public void CreateSubTask()
+    {
+        var model = CreateModel(user);
+        
+        model.CreateTask(user, 1, "追加したタスク", null);
+
+        List<string> ids = CreateTaskIDList(model);
+
+        Assert.IsNull(model.ReadTask(ids[0]).NodeIDs);
+
+        model.AddSubTask(ids[0], ids.Last());
+
+        Assert.IsNotNull(model.ReadTask(ids[0]).NodeIDs);
+    }
+
+    [Test]
     public void ReadTask()
     {
-        var model = CreateModel();
+        var model = CreateModel(user);
 
         List<string> ids = CreateTaskIDList(model);
 
@@ -46,7 +65,7 @@ public class TaskModelTest
          * 更新前と後で値が変わっているかを確かめる。
          */
 
-        var model = CreateModel();
+        var model = CreateModel(user);
         List<string> ids = CreateTaskIDList(model);
         List<int> before = new List<int>();
 
@@ -68,7 +87,7 @@ public class TaskModelTest
     [Test]
     public void UpdateDescription()
     {
-        var model = CreateModel();
+        var model = CreateModel(user);
         List<string> ids = CreateTaskIDList(model);
         List<string> before = new List<string>();
 
@@ -90,19 +109,19 @@ public class TaskModelTest
     [Test]
     public void UpdateNodeIDs()
     {
-        var model = CreateModel();
+        var model = CreateModel(user);
         List<string> ids = CreateTaskIDList(model);
-        List<string[]> before = new List<string[]>();
+        List<List<string>> before = new List<List<string>>();
 
         for (int i = 0; i < ids.Count; i++)
         {
             TaskEntity entity = model.ReadTask(ids[i]);
             before.Add(entity.NodeIDs);
-            string[] node = new string[4];
-            node[0] = "subtask_1";
-            node[1] = "subtask_2";
-            node[2] = "subtask_3";
-            node[3] = "subtask_4";
+            List<string> node = new List<string>();
+            node.Add("subtask_1");
+            node.Add("subtask_2");
+            node.Add("subtask_3");
+            node.Add("subtask_4");
             model.UpdateNodeIDs(ids[i], node);
         }
 
@@ -110,7 +129,7 @@ public class TaskModelTest
         {
             TaskEntity entity = model.ReadTask(ids[i]);
             var beforeVal = before[i];
-            string[] afterVal = entity.NodeIDs;
+            List<string> afterVal = entity.NodeIDs;
             Assert.AreNotEqual(beforeVal, afterVal);
         }
     }
@@ -135,7 +154,6 @@ public class TaskModelTest
         }
     }
 
-
     void CheckTaskValues(TaskEntity entity)
     {
         Assert.IsNotNull(entity.ID);
@@ -145,23 +163,28 @@ public class TaskModelTest
         Assert.IsNotNull(entity.Desccription);
         if (entity.NodeIDs != null)
         {
-            Assert.IsNotNull(entity.NodeIDs.Length > 0);
+            Assert.IsNotNull(entity.NodeIDs.Count > 0);
         }
     }
 
-    TaskModel CreateModel()
+    TaskModel CreateModel(UserEntity ue)
     {
-        UserEntity ue = new UserEntity();
-
         TaskModel model = new TaskModel();
-        model.CreateTask(ue, 1, "だいじ_1", null);
-        model.CreateTask(ue, 2, "だいじ_2", null);
+        model.CreateTask(ue, 1, "だいじ_1", null);                     // 0
+        model.CreateTask(ue, 2, "だいじ_2", null);                     // 1
+        model.CreateTask(ue, 1, "サブタスクあり", null);               // 2
 
-        string[] node = new string[2];
-        node[0] = "subtask_1";
-        node[1] = "subtask_2";
+        model.CreateTask(ue, 1, "サブタスク1", null);                  // 3
+        model.CreateTask(ue, 1, "サブタスク2 - サブタスクあり", null);  // 4
 
-        model.CreateTask(ue, 3, "だいじ_3", node);
+        model.CreateTask(ue, 3, "サブタスクのサブタスク", null);        // 5
+        
+        List<string> ids = CreateTaskIDList(model);
+
+        model.AddSubTask(ids[2], ids[3]);
+        model.AddSubTask(ids[2], ids[4]);
+
+        model.AddSubTask(ids[4], ids[5]);
 
         return model;
     }
@@ -173,14 +196,6 @@ public class TaskModelTest
         {
             taskIDList.Add(item);
         }
-
         return taskIDList;
     }
-
-
-
-
-
-
-
 }
