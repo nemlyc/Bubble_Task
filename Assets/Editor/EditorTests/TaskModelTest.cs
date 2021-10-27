@@ -115,12 +115,32 @@ public class TaskModelTest
         }
     }
 
+    [Test]
+    public void CompleteTaskTest()
+    {
+        UserEntity ue = new UserEntity();
+
+        TaskModel model = new TaskModel();
+        model.CreateTask(ue, 1, "‚¾‚¢‚¶_1", null);
+        model.CreateTask(ue, 2, "‚¾‚¢‚¶_2", null);
+
+        List<string> ids = CreateTaskIDList(model);
+
+        foreach (var item in ids)
+        {
+            var ent = model.ReadTask(item);
+            Assert.AreEqual(ent.IsCompleted, false);
+            model.CompleteTask(item);
+            Assert.AreEqual(ent.IsCompleted, true);
+        }
+    }
 
 
     void CheckTaskValues(TaskEntity entity)
     {
         Assert.IsNotNull(entity.ID);
         Assert.IsNotNull(entity.UserID);
+        Assert.IsNotNull(entity.IsCompleted);
         Assert.IsNotNull(entity.Priority);
         Assert.IsNotNull(entity.Desccription);
         if (entity.NodeIDs != null)
