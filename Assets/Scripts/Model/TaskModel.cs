@@ -23,6 +23,21 @@ public class TaskModel
 
         taskDictionary.Add(entity.ID, entity);
     }
+    public string CreateTaskEntity(UserEntity userID, int priority, string description, List<string> node)
+    {
+        TaskEntity entity = new TaskEntity
+        {
+            UserID = userID.ID,
+            IsCompleted = false,
+            Priority = priority,
+            Desccription = description,
+            NodeIDs = node
+        };
+
+        taskDictionary.Add(entity.ID, entity);
+
+        return entity.ID;
+    }
 
     public void AddSubTask(string parentID, string childID)
     {
