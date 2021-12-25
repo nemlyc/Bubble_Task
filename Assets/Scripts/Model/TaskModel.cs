@@ -17,7 +17,7 @@ public class TaskModel
             UserID = userID.ID,
             IsCompleted = false,
             Priority = priority,
-            Desccription = description,
+            Description = description,
             NodeIDs = node
         };
 
@@ -30,7 +30,7 @@ public class TaskModel
             UserID = userID.ID,
             IsCompleted = false,
             Priority = priority,
-            Desccription = description,
+            Description = description,
             NodeIDs = node
         };
 
@@ -76,7 +76,7 @@ public class TaskModel
 
     public void UpdateDescription(string ID, string description)
     {
-        ReadTask(ID).Desccription = description;
+        ReadTask(ID).Description = description;
     }
 
     public void UpdateNodeIDs(string ID, List<string> node)
