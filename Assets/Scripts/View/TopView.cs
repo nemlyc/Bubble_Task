@@ -38,7 +38,7 @@ public class TopView : MonoBehaviour
         bubbleObject.GetComponent<Button>().OnClickAsObservable().Subscribe(_ =>
         {
             taskViewModel.SetView(ViewState.Editor, bubble.GetID());
-        });
+        }).AddTo(this);
     }
 
     public void UpdateTask(TaskEntity task)
@@ -67,11 +67,10 @@ public class TopView : MonoBehaviour
             }
         }).AddTo(this);
 
-        addButton.OnClickAsObservable()
-            .Subscribe(_ =>
-            {
-                taskViewModel.SetView(ViewState.Editor);
-            }).AddTo(this);
+        addButton.OnClickAsObservable().Subscribe(_ =>
+        {
+            taskViewModel.SetView(ViewState.Editor);
+        }).AddTo(this);
     }
 
     private Transform GetBubble(string ID)
