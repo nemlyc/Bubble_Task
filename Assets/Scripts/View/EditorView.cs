@@ -8,12 +8,6 @@ using UnityEngine.UI;
 
 public class EditorView : MonoBehaviour
 {
-    /*
-     * - Priority Button * 3
-     * - TextArea
-     * - Submit Button
-     * - DeleteButton
-     */
     [SerializeField]
     GameObject editorViewRoot;
     [SerializeField]
@@ -41,8 +35,6 @@ public class EditorView : MonoBehaviour
             if (currentView.Equals(ViewState.Editor))
             {
                 editorViewRoot.SetActive(true);
-
-                InitializeEditorView();
             }
             else
             {
@@ -59,18 +51,37 @@ public class EditorView : MonoBehaviour
 
         submitButton.OnClickAsObservable().Subscribe(_ =>
         {
-            var result = taskViewModel.CreateTask(priority.Value, taskInputField.text, null, out var resultText);
-            if (result)
+            if (taskViewModel.FocusID.Value != null)
             {
-                // 成功ダイアログ
-                Debug.Log(resultText);
+                var result = taskViewModel.UpdateTask(priority.Value, taskInputField.text, null, out var resultText);
+                if (result)
+                {
+                    // 成功ダイアログ
+                    Debug.Log(resultText);
 
-                taskViewModel.SetView(ViewState.Top);
+                    taskViewModel.SetView(ViewState.Top);
+                }
+                else
+                {
+                    // 失敗理由
+                    Debug.Log(resultText);
+                }
             }
             else
             {
-                // 失敗理由
-                Debug.Log(resultText);
+                var result = taskViewModel.CreateTask(priority.Value, taskInputField.text, null, out var resultText);
+                if (result)
+                {
+                    // 成功ダイアログ
+                    Debug.Log(resultText);
+
+                    taskViewModel.SetView(ViewState.Top);
+                }
+                else
+                {
+                    // 失敗理由
+                    Debug.Log(resultText);
+                }
             }
         }).AddTo(this);
 
@@ -82,9 +93,15 @@ public class EditorView : MonoBehaviour
                 taskViewModel.SetView(ViewState.Top);
             }
         }).AddTo(this);
+
+
+        taskViewModel.FocusID.Subscribe(_ =>
+        {
+            UpdateEditorView();
+        }).AddTo(this);
     }
 
-    void InitializeEditorView()
+    void UpdateEditorView()
     {
         var result = taskViewModel.ReadTask(out var entity);
         if (result)

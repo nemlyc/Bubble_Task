@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using System;
+using Cysharp.Threading.Tasks;
 
 public class TaskViewModel : MonoBehaviour
 {
@@ -28,8 +29,9 @@ public class TaskViewModel : MonoBehaviour
     readonly int BodyTextMaxLength = 30;
 
     readonly string CreateReturnTrue = "タスクを登録しました。";
-    readonly string CreateReturnNull = "入力が空欄です。";
-    readonly string CreateReturnOver = "文字数オーバーです。";
+    readonly string UpdateReturnTrue = "タスクを更新しました。";
+    readonly string ReturnEmpty = "入力が空欄です。";
+    readonly string ReturnFillOver = "文字数オーバーです。";
 
     private void Awake()
     {
@@ -81,37 +83,54 @@ public class TaskViewModel : MonoBehaviour
 
     public void CompleteTask(string id)
     {
-        taskModel.CompleteTask(id);        
+        taskModel.CompleteTask(id);
     }
 
     public bool CreateTask(int priority, string description, List<string> node, out string resultText)
     {
-        taskModel.CreateTask(user, priority, description, node);
-        if (description.Length == 0)
+        var result = ValidateEntity(description, node, out var validateResult);
+        if (result)
         {
-            resultText = CreateReturnNull;
-            return false;
-        }
-        if (description.Length >= BodyTextMaxLength)
-        {
-            var overSize = description.Length - BodyTextMaxLength;
-            resultText = $"{CreateReturnOver} : {overSize}";
-            return false;
-        }
+            taskModel.CreateTask(user, priority, description, node);
 
-        resultText = CreateReturnTrue;
-        return true;
+            resultText = CreateReturnTrue;
+            return true;
+        }
+        else
+        {
+            resultText = validateResult;
+            return false;
+        }
+    }
+    public bool UpdateTask(int priority, string description, List<string> node, out string resultText)
+    {
+        var result = ValidateEntity(description, node, out var validateResult);
+        if (result)
+        {
+            //Todo: 冗長
+            taskModel.UpdatePriority(FocusID.Value, priority);
+            taskModel.UpdateDescription(FocusID.Value, description);
+            //taskModel.UpdateNodeIDs(FocusID.Value, node);
+
+            resultText = UpdateReturnTrue;
+            return true;
+        }
+        else
+        {
+            resultText = validateResult;
+            return false;
+        }
     }
 
-    public bool ReadTask(out TaskEntity focusEntity)
+    public bool ReadTask(out TaskEntity entity)
     {
-        if (FocusID.Value != null)
+        if (focusID.Value != null)
         {
-            focusEntity = taskModel.ReadTask(FocusID.Value);
+            entity = taskModel.ReadTask(focusID.Value);
             return true;
         }
 
-        focusEntity = null;
+        entity = null;
         return false;
     }
 
@@ -136,5 +155,23 @@ public class TaskViewModel : MonoBehaviour
         {
             topView.AddBubble(taskDictionary[item]);
         }
+    }
+
+    private bool ValidateEntity(string description, List<string> node, out string resultText)
+    {
+        if (description.Length == 0)
+        {
+            resultText = ReturnEmpty;
+            return false;
+        }
+        if (description.Length >= BodyTextMaxLength)
+        {
+            var overSize = description.Length - BodyTextMaxLength;
+            resultText = $"{ReturnFillOver} : {overSize}";
+            return false;
+        }
+
+        resultText = CreateReturnTrue;
+        return true;
     }
 }

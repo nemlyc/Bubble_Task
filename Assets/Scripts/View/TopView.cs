@@ -34,6 +34,11 @@ public class TopView : MonoBehaviour
         var bubbleObject = Instantiate(bubblePrefab, bubbleRoot);
         var bubble = bubbleObject.GetComponent<IBubble>();
         bubble.Initialize(taskEntity);
+
+        bubbleObject.GetComponent<Button>().OnClickAsObservable().Subscribe(_ =>
+        {
+            taskViewModel.SetView(ViewState.Editor, bubble.GetID());
+        });
     }
 
     public void UpdateTask(TaskEntity task)

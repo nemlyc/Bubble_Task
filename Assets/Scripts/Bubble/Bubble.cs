@@ -33,4 +33,9 @@ public class Bubble : MonoBehaviour, IBubble
     {
         
     }
+
+    public string GetID()
+    {
+        return TaskID;
+    }
 }
