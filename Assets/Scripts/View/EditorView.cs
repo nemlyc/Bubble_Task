@@ -83,6 +83,8 @@ public class EditorView : MonoBehaviour
                     Debug.Log(resultText);
                 }
             }
+
+            UpdateEditorView();
         }).AddTo(this);
 
         deleteButton.OnClickAsObservable().Subscribe(_ =>
