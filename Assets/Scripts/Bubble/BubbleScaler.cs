@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BubbleScaler
 {
-    readonly Vector3 SmallScale = new Vector3(0.75f, 0.75f, 0.75f);
-    readonly Vector3 MediumScale = new Vector3(1f, 1f, 1f);
-    readonly Vector3 LargeScale = new Vector3(1.25f, 1.25f, 1.25f);
+    readonly Vector3 SmallScale = new Vector3(0.40f, 0.40f, 0.40f);
+    readonly Vector3 MediumScale = new Vector3(0.60f, 0.60f, 0.60f);
+    readonly Vector3 LargeScale = new Vector3(0.75f, 0.75f, 0.75f);
 
     public Vector3 GetScale(int priority)
     {
