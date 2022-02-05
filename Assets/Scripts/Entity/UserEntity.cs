@@ -1,7 +1,7 @@
 using System;
 public class UserEntity
 {
-    public string ID { get; set; }
+    public string ID { get; private set; }
     //public string Password { get; set; }
     //public string PasswordConfiguration { get; set; }
 

@@ -94,7 +94,7 @@ public class TaskModelTest
         for (int i = 0; i < ids.Count; i++)
         {
             TaskEntity entity = model.ReadTask(ids[i]);
-            before.Add(entity.Desccription);
+            before.Add(entity.Description);
             model.UpdateDescription(ids[i], "updated");
         }
 
@@ -102,7 +102,7 @@ public class TaskModelTest
         {
             TaskEntity entity = model.ReadTask(ids[i]);
             var beforeVal = before[i];
-            string afterVal = entity.Desccription;
+            string afterVal = entity.Description;
             Assert.AreNotEqual(beforeVal, afterVal);
         }
     }
@@ -160,7 +160,7 @@ public class TaskModelTest
         Assert.IsNotNull(entity.UserID);
         Assert.IsNotNull(entity.IsCompleted);
         Assert.IsNotNull(entity.Priority);
-        Assert.IsNotNull(entity.Desccription);
+        Assert.IsNotNull(entity.Description);
         if (entity.NodeIDs != null)
         {
             Assert.IsNotNull(entity.NodeIDs.Count > 0);

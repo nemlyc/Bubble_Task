@@ -4,7 +4,8 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "com.nemlyc.BubbleTask"
+        "com.nemlyc.BubbleTask",
+        "UniRx"
     ],
     "includePlatforms": [
         "Editor"

@@ -1,42 +1,37 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using UniRx;
 
 public class TaskModel
 {
-    private Dictionary<string, TaskEntity> taskDictionary;
+    public ReactiveDictionary<string, TaskEntity> taskDictionary;
+    Subject<TaskEntity> updateTask = new Subject<TaskEntity>();
+    Subject<TaskEntity> completeTask = new Subject<TaskEntity>();
+    
+    public IObservable<DictionaryAddEvent<string, TaskEntity>> AddDictionary => taskDictionary.ObserveAdd();
+    public IObservable<DictionaryRemoveEvent<string, TaskEntity>> RemoveDictionary => taskDictionary.ObserveRemove();
+    public IObservable<TaskEntity> UpdateTaskInfo => updateTask.AsObservable();
+    public IObservable<TaskEntity> CompleteTaskObserbable => completeTask.AsObservable();
 
     public TaskModel()
     {
-        taskDictionary = new Dictionary<string, TaskEntity>();
+        taskDictionary = new ReactiveDictionary<string, TaskEntity>();
     }
 
-    public void CreateTask(UserEntity userID, int priority, string description, List<string> node)
+    public TaskEntity CreateTask(UserEntity userID, int priority, string description, List<string> node)
     {
         TaskEntity entity = new TaskEntity
         {
             UserID = userID.ID,
             IsCompleted = false,
             Priority = priority,
-            Desccription = description,
+            Description = description,
             NodeIDs = node
         };
-
-        taskDictionary.Add(entity.ID, entity);
-    }
-    public string CreateTaskEntity(UserEntity userID, int priority, string description, List<string> node)
-    {
-        TaskEntity entity = new TaskEntity
-        {
-            UserID = userID.ID,
-            IsCompleted = false,
-            Priority = priority,
-            Desccription = description,
-            NodeIDs = node
-        };
-
         taskDictionary.Add(entity.ID, entity);
 
-        return entity.ID;
+        return entity;
     }
 
     public void AddSubTask(string parentID, string childID)
@@ -49,13 +44,13 @@ public class TaskModel
         parent.NodeIDs.Add(childID);
     }
 
-    public Dictionary<string, TaskEntity> ReadTaskDictionary()
+    public ReactiveDictionary<string, TaskEntity> ReadTaskDictionary()
     {
         return taskDictionary;
     }
-    public TaskEntity ReadTask(string key)
+    public TaskEntity ReadTask(string ID)
     {
-        var gotValue = taskDictionary.TryGetValue(key, out TaskEntity value);
+        var gotValue = taskDictionary.TryGetValue(ID, out TaskEntity value);
         if (!gotValue)
         {
             return null;
@@ -67,21 +62,25 @@ public class TaskModel
     {
         var key = entity.ID;
         taskDictionary[key] = entity;
+        updateTask.OnNext(entity);
     }
 
     public void UpdatePriority(string ID, int priority)
     {
         ReadTask(ID).Priority = priority;
+        updateTask.OnNext(ReadTask(ID));
     }
 
     public void UpdateDescription(string ID, string description)
     {
-        ReadTask(ID).Desccription = description;
+        ReadTask(ID).Description = description;
+        updateTask.OnNext(ReadTask(ID));
     }
 
     public void UpdateNodeIDs(string ID, List<string> node)
     {
         ReadTask(ID).NodeIDs = node;
+        updateTask.OnNext(ReadTask(ID));
     }
 
     public void CompleteTask(string ID)
@@ -104,11 +103,15 @@ public class TaskModel
             else
             {
                 targetEntity.IsCompleted = true;
+                //updateTask.OnNext(ReadTask(ID));
+                completeTask.OnNext(ReadTask(ID));
             }
         }
         else
         {
             targetEntity.IsCompleted = true;
+            //updateTask.OnNext(ReadTask(ID));
+            completeTask.OnNext(ReadTask(ID));
         }
     }
 
