@@ -92,8 +92,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -145,6 +145,9 @@ GameObject:
   - component: {fileID: 4434413188539338230}
   - component: {fileID: 5765070891098898817}
   - component: {fileID: 2885744695014143587}
+  - component: {fileID: -1025300268399244322}
+  - component: {fileID: 5404724423677365030}
+  - component: {fileID: 6062988856381248388}
   m_Layer: 5
   m_Name: Bubble Base
   m_TagString: Untagged
@@ -230,6 +233,60 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyText: {fileID: 4434413187564376208}
+  backgroundImage: {fileID: 4434413188735275640}
+  bubbleColors:
+  - {fileID: -8260814369363090705, guid: 9b44a0fdc802949e5a32e73be37ca1ad, type: 3}
+  - {fileID: -5950793441169631895, guid: 67ad306a2245f4ee8b7a0432f8fbb83e, type: 3}
+  - {fileID: -3711502590499500167, guid: 143781e329b974f21a4eb353ba25e9da, type: 3}
+--- !u!114 &-1025300268399244322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4434413188024295576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e4e866b1de7464d9b9620412ff1408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &5404724423677365030
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4434413188024295576}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 384
+--- !u!50 &6062988856381248388
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4434413188024295576}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 10
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &4434413188735275642
 GameObject:
   m_ObjectHideFlags: 0
