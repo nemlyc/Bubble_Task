@@ -21,6 +21,7 @@ public class BubbleMovement : MonoBehaviour
     readonly float BoundX = Screen.width;
     readonly float BoundY = Screen.height;
     readonly float HeaderHeight = 350f;
+    readonly string BoundTag = "Bound";
 
     private void Awake()
     {
@@ -30,14 +31,9 @@ public class BubbleMovement : MonoBehaviour
     public void InitializePosition()
     {
         transform.position = new Vector2(
-            UnityEngine.Random.Range(0f + radius, Screen.width - radius), 
-            UnityEngine.Random.Range(0f + radius, Screen.height - radius - HeaderHeight)
+            UnityEngine.Random.Range(0f + radius * 2, Screen.width - radius * 2),
+            UnityEngine.Random.Range(0f + radius * 2, Screen.height - (radius * 2) - HeaderHeight)
             );
-        if (transform.position.x + radius > BoundX || transform.position.x - radius < 0 ||
-            transform.position.y + radius > BoundY || transform.position.y - radius < 0)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, Vector3.zero, 1);
-        }
     }
 
     private void Update()
@@ -53,8 +49,14 @@ public class BubbleMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //逆ベクトルを設定
+        //相手と反発するベクトルを設定
         moveVector = -1 * (collision.transform.position - transform.position).normalized;
+
+        //壁に対しては反転?
+        if (collision.collider.gameObject.CompareTag(BoundTag))
+        {
+            moveVector *= -1;
+        }
 
         var mag = collision.collider.bounds.size.magnitude;
 
@@ -64,6 +66,7 @@ public class BubbleMovement : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        Debug.Log("脱出");
         timer = Observable.Interval(TimeSpan.FromMilliseconds(100))
              .Subscribe(time =>
              {
