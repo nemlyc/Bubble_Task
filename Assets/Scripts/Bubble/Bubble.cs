@@ -21,6 +21,9 @@ public class Bubble : MonoBehaviour, IBubble
 
     public void Crash()
     {
+        var taskViewModel = FindObjectOfType<TaskViewModel>();
+        taskViewModel.CompleteTask(TaskID);
+
         Destroy(gameObject);
     }
 
