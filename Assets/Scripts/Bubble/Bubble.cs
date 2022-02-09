@@ -12,14 +12,19 @@ public class Bubble : MonoBehaviour, IBubble
     TMPro.TMP_Text bodyText;
 
     [SerializeField]
-    Image backgroundImage;
+    Image backgroundImage, progressCircle;
 
     [SerializeField]
     Sprite[] bubbleColors;
 
-    public void Crash(string crashID)
-    {
+    InputDetector input;
 
+    public void Crash()
+    {
+        var taskViewModel = FindObjectOfType<TaskViewModel>();
+        taskViewModel.CompleteTask(TaskID);
+
+        Destroy(gameObject);
     }
 
     public void Initialize(TaskEntity task)
@@ -32,6 +37,8 @@ public class Bubble : MonoBehaviour, IBubble
 
         GetComponent<BubbleMovement>().InitializePosition();
         UpdateInfo(task);
+
+        input = gameObject.AddComponent<InputDetector>();
     }
 
     public void UpdateInfo(TaskEntity task)
@@ -49,5 +56,17 @@ public class Bubble : MonoBehaviour, IBubble
     public string GetID()
     {
         return TaskID;
+    }
+
+    void Update()
+    {
+        if (input.isTimerStarted)
+        {
+            progressCircle.fillAmount = input.CurrentHoldingNormalTime();
+        }
+        else
+        {
+            progressCircle.fillAmount = 0;
+        }
     }
 }
