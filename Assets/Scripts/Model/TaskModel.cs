@@ -14,9 +14,12 @@ public class TaskModel
     public IObservable<TaskEntity> UpdateTaskInfo => updateTask.AsObservable();
     public IObservable<TaskEntity> CompleteTaskObserbable => completeTask.AsObservable();
 
+    TaskFileController fileManager;
+
     public TaskModel()
     {
         taskDictionary = new ReactiveDictionary<string, TaskEntity>();
+        fileManager = new TaskFileController();
     }
 
     public TaskEntity CreateTask(UserEntity userID, int priority, string description, List<string> node)
@@ -30,6 +33,8 @@ public class TaskModel
             NodeIDs = node
         };
         taskDictionary.Add(entity.ID, entity);
+
+        fileManager.WriteData(taskDictionary);
 
         return entity;
     }
@@ -46,6 +51,7 @@ public class TaskModel
 
     public ReactiveDictionary<string, TaskEntity> ReadTaskDictionary()
     {
+        taskDictionary = fileManager.ReadData();
         return taskDictionary;
     }
     public TaskEntity ReadTask(string ID)

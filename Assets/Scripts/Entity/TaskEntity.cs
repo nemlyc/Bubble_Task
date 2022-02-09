@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 
+[System.Serializable]
 public class TaskEntity
 {
     public string ID { get; private set; }
