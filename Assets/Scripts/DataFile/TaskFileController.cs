@@ -6,6 +6,7 @@ using UniRx;
 public class TaskFileController
 {
     readonly string TaskFileName = "BubbleTaskData.json";
+    readonly string ErrorMsg = "-1";
 
     public void WriteData(ReactiveDictionary<string, TaskEntity> dict)
     {
@@ -16,13 +17,22 @@ public class TaskFileController
     public ReactiveDictionary<string, TaskEntity> ReadData()
     {
         var json = JsonManager.ReadJsonData(TaskFileName);
-        var dict = JsonManager.ExpandJsonData<ReactiveDictionary<string, TaskEntity>>(json);
 
-        foreach (var item in dict.Keys)
+        ReactiveDictionary<string, TaskEntity> dictionary;
+        if (json.Equals(ErrorMsg))
         {
-            dict[item].SetID(item);
+            dictionary = new ReactiveDictionary<string, TaskEntity>();
+        }
+        else
+        {
+            dictionary = JsonManager.ExpandJsonData<ReactiveDictionary<string, TaskEntity>>(json);
         }
 
-        return dict;
+        foreach (var item in dictionary.Keys)
+        {
+            dictionary[item].SetID(item);
+        }
+
+        return dictionary;
     }
 }
