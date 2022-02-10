@@ -5,7 +5,7 @@ using System.IO;
 using System.Text;
 using UnityEngine;
 
-using Utf8Json;
+using Newtonsoft.Json;
 
 public static class JsonManager
 {
@@ -22,7 +22,7 @@ public static class JsonManager
     /// <returns>jsonオブジェクト</returns>
     public static string GenerateJsonObject<T>(T jsonClass)
     {
-        var json = JsonSerializer.ToJsonString(jsonClass);
+        string json = JsonConvert.SerializeObject(jsonClass);
 
         return json;
     }
@@ -110,7 +110,7 @@ public static class JsonManager
 
     public static T ExpandJsonData<T>(string json)
     {
-        var data = JsonSerializer.Deserialize<T>(json);
+        var data = JsonConvert.DeserializeObject<T>(json);
 
         return data;
     }
