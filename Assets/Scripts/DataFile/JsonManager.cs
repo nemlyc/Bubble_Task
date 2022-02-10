@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -10,16 +10,16 @@ using Newtonsoft.Json;
 public static class JsonManager
 {
     /*
-     * JsonSerializer‚ğƒ‰ƒbƒv‚·‚éƒNƒ‰ƒXB
-     * JsonSerializer‚ğg—p‚µ‚½CRUD
-     * ƒtƒ@ƒCƒ‹‚Ì‘‚«‚Şƒƒ\ƒbƒh‚ğ‘µ‚¦‚éBƒ^ƒCƒ~ƒ“ƒO‚Í—˜—p‚·‚éƒNƒ‰ƒXB
+     * JsonSerializerã‚’ãƒ©ãƒƒãƒ—ã™ã‚‹ã‚¯ãƒ©ã‚¹ã€‚
+     * JsonSerializerã‚’ä½¿ç”¨ã—ãŸCRUD
+     * ãƒ•ã‚¡ã‚¤ãƒ«ã®æ›¸ãè¾¼ã‚€ãƒ¡ã‚½ãƒƒãƒ‰ã‚’æƒãˆã‚‹ã€‚ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã¯åˆ©ç”¨ã™ã‚‹ã‚¯ãƒ©ã‚¹ã€‚
      */
     /// <summary>
-    /// jsonƒIƒuƒWƒFƒNƒg‚Ì¶¬
+    /// jsonã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç”Ÿæˆ
     /// </summary>
-    /// <typeparam name="T">ŠY“–‚·‚éJsonƒtƒH[ƒ}ƒbƒgƒNƒ‰ƒX</typeparam>
-    /// <param name="jsonClass">ƒf[ƒ^‚ğ•Û‚µ‚½jsonƒtƒH[ƒ}ƒbƒgƒNƒ‰ƒX</param>
-    /// <returns>jsonƒIƒuƒWƒFƒNƒg</returns>
+    /// <typeparam name="T">è©²å½“ã™ã‚‹Jsonãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚¯ãƒ©ã‚¹</typeparam>
+    /// <param name="jsonClass">ãƒ‡ãƒ¼ã‚¿ã‚’ä¿æŒã—ãŸjsonãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚¯ãƒ©ã‚¹</param>
+    /// <returns>jsonã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ</returns>
     public static string GenerateJsonObject<T>(T jsonClass)
     {
         string json = JsonConvert.SerializeObject(jsonClass);
@@ -28,10 +28,10 @@ public static class JsonManager
     }
 
     /// <summary>
-    /// ƒtƒ@ƒCƒ‹–¼‚ğ‡‚í‚¹‚½ƒfƒoƒCƒX‚²‚Æ‚Ìƒtƒ@ƒCƒ‹•Û‘¶æ‚Ìâ‘ÎƒpƒX‚ğ¶¬‚·‚éB
+    /// ãƒ•ã‚¡ã‚¤ãƒ«åã‚’åˆã‚ã›ãŸãƒ‡ãƒã‚¤ã‚¹ã”ã¨ã®ãƒ•ã‚¡ã‚¤ãƒ«ä¿å­˜å…ˆã®çµ¶å¯¾ãƒ‘ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã€‚
     /// </summary>
-    /// <param name="fileName">•Û‘¶‚·‚éƒtƒ@ƒCƒ‹–¼</param>
-    /// <returns>â‘ÎƒpƒX</returns>
+    /// <param name="fileName">ä¿å­˜ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«å</param>
+    /// <returns>çµ¶å¯¾ãƒ‘ã‚¹</returns>
     public static string GetPersistentDataPath(string fileName)
     {
         var path = Path.Combine(Application.persistentDataPath, fileName);
@@ -46,10 +46,10 @@ public static class JsonManager
     }
 
     /// <summary>
-    /// ŠY“–‚·‚éâ‘ÎƒpƒX‚ÉAƒf[ƒ^‚ğ‘‚«‚ŞB
+    /// è©²å½“ã™ã‚‹çµ¶å¯¾ãƒ‘ã‚¹ã«ã€ãƒ‡ãƒ¼ã‚¿ã‚’æ›¸ãè¾¼ã‚€ã€‚
     /// </summary>
-    /// <param name="fileName">•Û‘¶‚·‚éƒtƒ@ƒCƒ‹–¼</param>
-    /// <param name="json">jsonƒIƒuƒWƒFƒNƒg : string</param>
+    /// <param name="fileName">ä¿å­˜ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«å</param>
+    /// <param name="json">jsonã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ : string</param>
     public static void WriteJsonData(string fileName, string json)
     {
         var path = GetPersistentDataPath(fileName);
@@ -88,10 +88,10 @@ public static class JsonManager
     }
 
     /// <summary>
-    /// StreamingAssets‚©‚çƒeƒLƒXƒgƒf[ƒ^‚ğ“Ç‚İ‚ñ‚Åstring‚Å•Ô‚·B
+    /// StreamingAssetsã‹ã‚‰ãƒ†ã‚­ã‚¹ãƒˆãƒ‡ãƒ¼ã‚¿ã‚’èª­ã¿è¾¼ã‚“ã§stringã§è¿”ã™ã€‚
     /// </summary>
-    /// <param name="fileName">Šg’£q‚ğŠÜ‚Şƒtƒ@ƒCƒ‹–¼</param>
-    /// <returns>ƒeƒLƒXƒgƒf[ƒ^</returns>
+    /// <param name="fileName">æ‹¡å¼µå­ã‚’å«ã‚€ãƒ•ã‚¡ã‚¤ãƒ«å</param>
+    /// <returns>ãƒ†ã‚­ã‚¹ãƒˆãƒ‡ãƒ¼ã‚¿</returns>
     public static string ReadJsonDataStreamingAssets(string fileName)
     {
         var path = GetStreamingDataPath(fileName);

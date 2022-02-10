@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,9 +8,9 @@ public class StaticView : MonoBehaviour
     TMPro.TMP_Text headerText;
 
     readonly Dictionary<ViewState, string> headerDictionary = new Dictionary<ViewState, string>() {
-        {ViewState.Top, "É^ÉXÉNÉäÉXÉg"},
-        {ViewState.Editor, "ï“èW" },
-        //{ViewState.Dialog, "ï“èW" },
+        {ViewState.Top, "„Çø„Çπ„ÇØ„É™„Çπ„Éà"},
+        {ViewState.Editor, "Á∑®ÈõÜ" },
+        //{ViewState.Dialog, "Á∑®ÈõÜ" },
     };
 
     private void Awake()

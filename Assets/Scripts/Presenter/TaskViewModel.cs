@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
@@ -27,10 +27,10 @@ public class TaskViewModel : MonoBehaviour
 
     readonly int BodyTextMaxLength = 30;
 
-    readonly string CreateReturnTrue = "ƒ^ƒXƒN‚ğ“o˜^‚µ‚Ü‚µ‚½B";
-    readonly string UpdateReturnTrue = "ƒ^ƒXƒN‚ğXV‚µ‚Ü‚µ‚½B";
-    readonly string ReturnEmpty = "“ü—Í‚ª‹ó—“‚Å‚·B";
-    readonly string ReturnFillOver = "•¶š”ƒI[ƒo[‚Å‚·B";
+    readonly string CreateReturnTrue = "ã‚¿ã‚¹ã‚¯ã‚’ç™»éŒ²ã—ã¾ã—ãŸã€‚";
+    readonly string UpdateReturnTrue = "ã‚¿ã‚¹ã‚¯ã‚’æ›´æ–°ã—ã¾ã—ãŸã€‚";
+    readonly string ReturnEmpty = "å…¥åŠ›ãŒç©ºæ¬„ã§ã™ã€‚";
+    readonly string ReturnFillOver = "æ–‡å­—æ•°ã‚ªãƒ¼ãƒãƒ¼ã§ã™ã€‚";
 
     private void Awake()
     {
@@ -106,7 +106,7 @@ public class TaskViewModel : MonoBehaviour
         var result = ValidateEntity(description, node, out var validateResult);
         if (result)
         {
-            //Todo: ç’·
+            //Todo: å†—é•·
             taskModel.UpdatePriority(FocusID.Value, priority);
             taskModel.UpdateDescription(FocusID.Value, description);
             //taskModel.UpdateNodeIDs(FocusID.Value, node);
@@ -144,7 +144,7 @@ public class TaskViewModel : MonoBehaviour
 
     private void InitializeData()
     {
-        //userID‚ğ“Ç‚İ‚ŞB
+        //userIDã‚’èª­ã¿è¾¼ã‚€ã€‚
         //userID = "readID";
         user.SetID(userID);
 
