@@ -47,6 +47,8 @@ public class TaskModel
             parent.NodeIDs = new List<string>();
         }
         parent.NodeIDs.Add(childID);
+
+        fileManager.WriteData(taskDictionary);
     }
 
     public ReactiveDictionary<string, TaskEntity> ReadTaskDictionary()
@@ -69,24 +71,32 @@ public class TaskModel
         var key = entity.ID;
         taskDictionary[key] = entity;
         updateTask.OnNext(entity);
+
+        fileManager.WriteData(taskDictionary);
     }
 
     public void UpdatePriority(string ID, int priority)
     {
         ReadTask(ID).Priority = priority;
         updateTask.OnNext(ReadTask(ID));
+
+        fileManager.WriteData(taskDictionary);
     }
 
     public void UpdateDescription(string ID, string description)
     {
         ReadTask(ID).Description = description;
         updateTask.OnNext(ReadTask(ID));
+
+        fileManager.WriteData(taskDictionary);
     }
 
     public void UpdateNodeIDs(string ID, List<string> node)
     {
         ReadTask(ID).NodeIDs = node;
         updateTask.OnNext(ReadTask(ID));
+
+        fileManager.WriteData(taskDictionary);
     }
 
     public void CompleteTask(string ID)
@@ -119,11 +129,15 @@ public class TaskModel
             //updateTask.OnNext(ReadTask(ID));
             completeTask.OnNext(ReadTask(ID));
         }
+
+        fileManager.WriteData(taskDictionary);
     }
 
     public void DeleteTask(string key)
     {
         taskDictionary.Remove(key);
+
+        fileManager.WriteData(taskDictionary);
     }
 
     /// <summary>
