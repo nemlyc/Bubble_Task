@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 
-public class TaskFileController : MonoBehaviour
+public class TaskFileController
 {
     readonly string TaskFileName = "BubbleTaskData.json";
 
@@ -17,6 +17,12 @@ public class TaskFileController : MonoBehaviour
     {
         var json = JsonManager.ReadJsonData(TaskFileName);
         var dict = JsonManager.ExpandJsonData<ReactiveDictionary<string, TaskEntity>>(json);
+
+        foreach (var item in dict.Keys)
+        {
+            dict[item].SetID(item);
+        }
+
         return dict;
     }
 }

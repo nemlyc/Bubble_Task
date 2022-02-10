@@ -177,7 +177,7 @@ public class TaskModelTest
         model.CreateTask(ue, 1, "サブタスク1", null);                  // 3
         model.CreateTask(ue, 1, "サブタスク2 - サブタスクあり", null);  // 4
 
-        model.CreateTask(ue, 3, "サブタスクのサブタスク", null);        // 5
+        model.CreateTask(ue, 2, "サブタスクのサブタスク", null);        // 5
         
         List<string> ids = CreateTaskIDList(model);
 
