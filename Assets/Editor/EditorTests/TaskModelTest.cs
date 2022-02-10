@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
@@ -32,7 +32,7 @@ public class TaskModelTest
     {
         var model = CreateModel(user);
         
-        model.CreateTask(user, 1, "’Ç‰Á‚µ‚½ƒ^ƒXƒN", null);
+        model.CreateTask(user, 1, "è¿½åŠ ã—ãŸã‚¿ã‚¹ã‚¯", null);
 
         List<string> ids = CreateTaskIDList(model);
 
@@ -62,7 +62,7 @@ public class TaskModelTest
     public void UpdatePriority()
     {
         /*
-         * XV‘O‚ÆŒã‚Å’l‚ª•Ï‚í‚Á‚Ä‚¢‚é‚©‚ğŠm‚©‚ß‚éB
+         * æ›´æ–°å‰ã¨å¾Œã§å€¤ãŒå¤‰ã‚ã£ã¦ã„ã‚‹ã‹ã‚’ç¢ºã‹ã‚ã‚‹ã€‚
          */
 
         var model = CreateModel(user);
@@ -140,8 +140,8 @@ public class TaskModelTest
         UserEntity ue = new UserEntity();
 
         TaskModel model = new TaskModel();
-        model.CreateTask(ue, 1, "‚¾‚¢‚¶_1", null);
-        model.CreateTask(ue, 2, "‚¾‚¢‚¶_2", null);
+        model.CreateTask(ue, 1, "ã ã„ã˜_1", null);
+        model.CreateTask(ue, 2, "ã ã„ã˜_2", null);
 
         List<string> ids = CreateTaskIDList(model);
 
@@ -170,14 +170,14 @@ public class TaskModelTest
     TaskModel CreateModel(UserEntity ue)
     {
         TaskModel model = new TaskModel();
-        model.CreateTask(ue, 1, "‚¾‚¢‚¶_1", null);                     // 0
-        model.CreateTask(ue, 2, "‚¾‚¢‚¶_2", null);                     // 1
-        model.CreateTask(ue, 1, "ƒTƒuƒ^ƒXƒN‚ ‚è", null);               // 2
+        model.CreateTask(ue, 1, "ã ã„ã˜_1", null);                     // 0
+        model.CreateTask(ue, 2, "ã ã„ã˜_2", null);                     // 1
+        model.CreateTask(ue, 1, "ã‚µãƒ–ã‚¿ã‚¹ã‚¯ã‚ã‚Š", null);               // 2
 
-        model.CreateTask(ue, 1, "ƒTƒuƒ^ƒXƒN1", null);                  // 3
-        model.CreateTask(ue, 1, "ƒTƒuƒ^ƒXƒN2 - ƒTƒuƒ^ƒXƒN‚ ‚è", null);  // 4
+        model.CreateTask(ue, 1, "ã‚µãƒ–ã‚¿ã‚¹ã‚¯1", null);                  // 3
+        model.CreateTask(ue, 1, "ã‚µãƒ–ã‚¿ã‚¹ã‚¯2 - ã‚µãƒ–ã‚¿ã‚¹ã‚¯ã‚ã‚Š", null);  // 4
 
-        model.CreateTask(ue, 2, "ƒTƒuƒ^ƒXƒN‚ÌƒTƒuƒ^ƒXƒN", null);        // 5
+        model.CreateTask(ue, 2, "ã‚µãƒ–ã‚¿ã‚¹ã‚¯ã®ã‚µãƒ–ã‚¿ã‚¹ã‚¯", null);        // 5
         
         List<string> ids = CreateTaskIDList(model);
 

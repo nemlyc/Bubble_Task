@@ -1,4 +1,4 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -6,11 +6,11 @@ using UnityEngine.EventSystems;
 public class InputDetector : EventTrigger
 {
     /*
-     * - ѓ{ѓ^ѓ“ѓNѓЉѓbѓNЋћЃAѓ^ѓCѓ}Ѓ[ѓXѓ^Ѓ[ѓg
-     * - ѓLѓѓѓ“ѓZѓ‹ЋћЃAѓ^ѓCѓ}Ѓ[‚рѓXѓgѓbѓv
-     *  - ѓNѓЉѓbѓN”»’ии‡’l€И‰єЃFѓNѓЉѓbѓN”»’и
-     *  - ѓNѓЉѓbѓN”»’ии‡’l€ИЏгЃFѓzЃ[ѓ‹ѓhѓAѓjѓЃЃ[ѓVѓ‡ѓ“ЌДђ¶
-     *  - ѓzЃ[ѓ‹ѓh”»’ии‡’l€ИЏгЃFѓzЃ[ѓ‹ѓh”»’и
+     * - гѓњг‚їгѓіг‚ЇгѓЄгѓѓг‚Їж™‚гЂЃг‚їг‚¤гѓћгѓјг‚№г‚їгѓјгѓ€
+     * - г‚­гѓЈгѓіг‚»гѓ«ж™‚гЂЃг‚їг‚¤гѓћгѓјг‚’г‚№гѓ€гѓѓгѓ—
+     *  - г‚ЇгѓЄгѓѓг‚Їе€¤е®љй–ѕеЂ¤д»Ґдё‹пјљг‚ЇгѓЄгѓѓг‚Їе€¤е®љ
+     *  - г‚ЇгѓЄгѓѓг‚Їе€¤е®љй–ѕеЂ¤д»ҐдёЉпјљгѓ›гѓјгѓ«гѓ‰г‚ўгѓ‹гѓЎгѓјг‚·гѓ§гѓіе†Ќз”џ
+     *  - гѓ›гѓјгѓ«гѓ‰е€¤е®љй–ѕеЂ¤д»ҐдёЉпјљгѓ›гѓјгѓ«гѓ‰е€¤е®љ
      */
 
     readonly float ClickTime = 0.1f;

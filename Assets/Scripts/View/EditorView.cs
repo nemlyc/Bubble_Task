@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
@@ -56,14 +56,14 @@ public class EditorView : MonoBehaviour
                 var result = taskViewModel.UpdateTask(priority.Value, taskInputField.text, null, out var resultText);
                 if (result)
                 {
-                    // ¬Œ÷ƒ_ƒCƒAƒƒO
+                    // æˆåŠŸãƒ€ã‚¤ã‚¢ãƒ­ã‚°
                     Debug.Log(resultText);
 
                     taskViewModel.SetView(ViewState.Top);
                 }
                 else
                 {
-                    // ¸”s——R
+                    // å¤±æ•—ç†ç”±
                     Debug.Log(resultText);
                 }
             }
@@ -72,14 +72,14 @@ public class EditorView : MonoBehaviour
                 var result = taskViewModel.CreateTask(priority.Value, taskInputField.text, null, out var resultText);
                 if (result)
                 {
-                    // ¬Œ÷ƒ_ƒCƒAƒƒO
+                    // æˆåŠŸãƒ€ã‚¤ã‚¢ãƒ­ã‚°
                     Debug.Log(resultText);
 
                     taskViewModel.SetView(ViewState.Top);
                 }
                 else
                 {
-                    // ¸”s——R
+                    // å¤±æ•—ç†ç”±
                     Debug.Log(resultText);
                 }
             }

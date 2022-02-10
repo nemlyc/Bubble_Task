@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UniRx;
@@ -7,9 +7,9 @@ using UnityEngine;
 public class BubbleMovement : MonoBehaviour
 {
     /*
-     * - ‚Ô‚Â‚©‚Á‚½‘ŠŽè‚Ì•ûŒü‚Æ‹tƒxƒNƒgƒ‹‚É“®‚­B
-     * - ‚Ô‚Â‚©‚è‚ª‚È‚­‚È‚Á‚½‚çA—Í‚Í0‚ÉŽû‘©B
-     * - ‰æ–ÊŠO‚És‚Á‚½‚çA–ß‚é
+     * - ã¶ã¤ã‹ã£ãŸç›¸æ‰‹ã®æ–¹å‘ã¨é€†ãƒ™ã‚¯ãƒˆãƒ«ã«å‹•ãã€‚
+     * - ã¶ã¤ã‹ã‚ŠãŒãªããªã£ãŸã‚‰ã€åŠ›ã¯0ã«åŽæŸã€‚
+     * - ç”»é¢å¤–ã«è¡Œã£ãŸã‚‰ã€æˆ»ã‚‹
      */
 
     Vector3 moveVector = Vector3.zero;
@@ -49,10 +49,10 @@ public class BubbleMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //‘ŠŽè‚Æ”½”­‚·‚éƒxƒNƒgƒ‹‚ðÝ’è
+        //ç›¸æ‰‹ã¨åç™ºã™ã‚‹ãƒ™ã‚¯ãƒˆãƒ«ã‚’è¨­å®š
         moveVector = -1 * (collision.transform.position - transform.position).normalized;
 
-        //•Ç‚É‘Î‚µ‚Ä‚Í”½“]?
+        //å£ã«å¯¾ã—ã¦ã¯åè»¢?
         if (collision.collider.gameObject.CompareTag(BoundTag))
         {
             moveVector *= -1;
@@ -66,7 +66,7 @@ public class BubbleMovement : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        Debug.Log("’Eo");
+        Debug.Log("è„±å‡º");
         timer = Observable.Interval(TimeSpan.FromMilliseconds(100))
              .Subscribe(time =>
              {

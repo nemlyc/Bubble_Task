@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UniRx;
@@ -102,9 +102,9 @@ public class TaskModel
     public void CompleteTask(string ID)
     {
         /*
-         * qƒm[ƒh‚ªÁ‰»‚³‚ê‚Ä‚¢‚é‚©Šm”FB
-         * qƒm[ƒh‚ªÁ‰»‚³‚ê‚Ä‚¢‚È‚¢ê‡F‚·‚×‚ÄÁ‰»
-         *                               Á‰»‚µ‚È‚¢
+         * å­ãƒãƒ¼ãƒ‰ãŒæ¶ˆåŒ–ã•ã‚Œã¦ã„ã‚‹ã‹ç¢ºèªã€‚
+         * å­ãƒãƒ¼ãƒ‰ãŒæ¶ˆåŒ–ã•ã‚Œã¦ã„ãªã„å ´åˆï¼šã™ã¹ã¦æ¶ˆåŒ–
+         *                               æ¶ˆåŒ–ã—ãªã„
          */
 
         TaskEntity targetEntity = ReadTask(ID);
@@ -114,7 +114,7 @@ public class TaskModel
             var isCompleted = CheckSubNodeCompleted(targetEntity);
             if (!isCompleted)
             {
-                //I‚í‚Á‚Ä‚¢‚È‚¢B
+                //çµ‚ã‚ã£ã¦ã„ãªã„æ™‚ã€‚
             }
             else
             {
@@ -141,16 +141,16 @@ public class TaskModel
     }
 
     /// <summary>
-    /// ƒTƒuƒm[ƒgƒ^ƒXƒN‚ªŠ®—¹‚µ‚Ä‚¢‚é‚©Šm‚©‚ß‚éB
+    /// ã‚µãƒ–ãƒãƒ¼ãƒˆã‚¿ã‚¹ã‚¯ãŒå®Œäº†ã—ã¦ã„ã‚‹ã‹ç¢ºã‹ã‚ã‚‹ã€‚
     /// </summary>
-    /// <param name="parentTask">eƒ^ƒXƒN</param>
+    /// <param name="parentTask">è¦ªã‚¿ã‚¹ã‚¯</param>
     /// <returns></returns>
     bool CheckSubNodeCompleted(TaskEntity parentTask)
     {
         bool isSubNodeCompleted = false;
         foreach (var item in parentTask.NodeIDs)
         {
-            // ƒTƒuƒ^ƒXƒN‚ªŠ®—¹‚µ‚Ä‚¢‚étrue
+            // ã‚µãƒ–ã‚¿ã‚¹ã‚¯ãŒå®Œäº†ã—ã¦ã„ã‚‹æ™‚true
             if (ReadTask(item).IsCompleted)
             {
                 isSubNodeCompleted = true;
