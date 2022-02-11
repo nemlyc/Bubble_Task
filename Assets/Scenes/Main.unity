@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3281,7 +3281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topViewRoot: {fileID: 1124437625}
   addButton: {fileID: 308379665}
-  bubblePrefab: {fileID: 1495241758042509241, guid: d160218226a8e4735970f3aff868fcf6, type: 3}
+  bubblePrefab: {fileID: 4434413188024295576, guid: f6f2138c192674223beade65be237ca5, type: 3}
   bubbleRoot: {fileID: 621057021}
   taskViewModel: {fileID: 1591402150}
 --- !u!114 &1591402150
