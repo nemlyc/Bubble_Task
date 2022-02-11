@@ -66,7 +66,6 @@ public class BubbleMovement : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        Debug.Log("脱出");
         timer = Observable.Interval(TimeSpan.FromMilliseconds(100))
              .Subscribe(time =>
              {
