@@ -1,5 +1,6 @@
 # Bubble_Task
 An app to manage tasks as bubbles.
+![image](https://user-images.githubusercontent.com/48580884/162725717-efcb38ba-d5d6-4568-9a1c-490e8027d3ff.png)
 
 ## 概要
 タスク一つひとつを泡に見立て、破裂させることで消化するインタラクティブなタスク管理アプリを実装しました。<br>
