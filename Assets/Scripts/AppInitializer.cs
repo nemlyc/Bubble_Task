@@ -6,6 +6,8 @@ public class AppInitializer : MonoBehaviour
 {
     private void Start()
     {
+#if UNITY_IOS
         Application.targetFrameRate = 60;
+#endif
     }
 }

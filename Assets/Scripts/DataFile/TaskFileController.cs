@@ -19,18 +19,17 @@ public class TaskFileController
         var json = JsonManager.ReadJsonData(TaskFileName);
 
         ReactiveDictionary<string, TaskEntity> dictionary;
-        if (json.Equals(ErrorMsg))
+        if (json.Equals(ErrorMsg) || json.Equals(""))
         {
             dictionary = new ReactiveDictionary<string, TaskEntity>();
         }
         else
         {
             dictionary = JsonManager.ExpandJsonData<ReactiveDictionary<string, TaskEntity>>(json);
-        }
-
-        foreach (var item in dictionary.Keys)
-        {
-            dictionary[item].SetID(item);
+            foreach (var item in dictionary.Keys)
+            {
+                dictionary[item].SetID(item);
+            }
         }
 
         return dictionary;

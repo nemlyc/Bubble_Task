@@ -52,13 +52,19 @@ public static class JsonManager
     /// <param name="json">jsonオブジェクト : string</param>
     public static void WriteJsonData(string fileName, string json)
     {
+#if !UNITY_WEBGL
         var path = GetPersistentDataPath(fileName);
 
         File.WriteAllText(path, json);
+#elif UNITY_WEBGL
+        PlayerPrefs.SetString(fileName, json);
+#endif
     }
 
     public static string ReadJsonData(string fileName)
     {
+#if !UNITY_WEBGL
+
         var path = GetPersistentDataPath(fileName);
 
         if (!File.Exists(path))
@@ -69,7 +75,9 @@ public static class JsonManager
         }
 
         var json = File.ReadAllText(path);
-
+#elif UNITY_WEBGL
+        var json = PlayerPrefs.GetString(fileName);
+#endif
         return json;
     }
     public static string ReadJsonDataResources(string fileName)
