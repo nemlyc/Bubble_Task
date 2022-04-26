@@ -28,6 +28,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5400430177502975245}
   m_RootOrder: 0
@@ -145,6 +146,7 @@ GameObject:
   - component: {fileID: 5400430176787140355}
   - component: {fileID: 5400430176787140357}
   - component: {fileID: 5400430176787140354}
+  - component: {fileID: 8316670630617257481}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -162,14 +164,15 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5400430177456253835}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 40, y: -85}
-  m_SizeDelta: {x: -80, y: -170}
+  m_AnchoredPosition: {x: 25, y: -620}
+  m_SizeDelta: {x: -50, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5400430176787140357
 CanvasRenderer:
@@ -200,35 +203,36 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Licensed under SIL Open Font License 1.1 (http://scripts.sil.org/OFL)\r\n\xA9
-    M PLUS Rounded 1c\n\n---\nThe MIT License (MIT)       Copyright (c) 2018 Yoshifumi
-    Kawai       Permission is hereby granted, free of charge, to any person obtaining
-    a copy   of this software and associated documentation files (the \"Software\"),
-    to deal   in the Software without restriction, including without limitation the
-    rights   to use, copy, modify, merge, publish, distribute, sublicense, and/or
-    sell   copies of the Software, and to permit persons to whom the Software is  
-    furnished to do so, subject to the following conditions:       The above copyright
-    notice and this permission notice shall be included in all   copies or substantial
-    portions of the Software.       THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY
-    OF ANY KIND, EXPRESS OR   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-    OF MERCHANTABILITY,   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-    NO EVENT SHALL THE   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES
-    OR OTHER   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-    FROM,   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-    IN THE   SOFTWARE.\n\n---\n\nThe MIT License (MIT)\r\nCopyright (c) 2019 Kalle
-    Jillheden (jilleJr)\r\nPermission is hereby granted, free of charge, to any person
-    obtaining a copy of this software and associated documentation files (the \"Software\"),
-    to deal in the Software without restriction, including without limitation the
-    rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is furnished
-    to do so, subject to the following conditions:\r\nThe above copyright notice
-    and this permission notice shall be included in all copies or substantial portions
-    of the Software.\r\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY
-    KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
-    OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-    IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-    WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n\n---\nThe MIT
-    License (MIT)\r\nCopyright (c) 2007 James Newton-King\r\nPermission is hereby
+    M PLUS Rounded 1c\n\n---\n\nUniRx\n\nThe MIT License (MIT)       Copyright (c)
+    2018 Yoshifumi Kawai       Permission is hereby granted, free of charge, to any
+    person obtaining a copy   of this software and associated documentation files
+    (the \"Software\"), to deal   in the Software without restriction, including
+    without limitation the rights   to use, copy, modify, merge, publish, distribute,
+    sublicense, and/or sell   copies of the Software, and to permit persons to whom
+    the Software is   furnished to do so, subject to the following conditions:      
+    The above copyright notice and this permission notice shall be included in all  
+    copies or substantial portions of the Software.       THE SOFTWARE IS PROVIDED
+    \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR   IMPLIED, INCLUDING BUT
+    NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,   FITNESS FOR A PARTICULAR
+    PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE   AUTHORS OR COPYRIGHT HOLDERS
+    BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER   LIABILITY, WHETHER IN AN ACTION OF
+    CONTRACT, TORT OR OTHERWISE, ARISING FROM,   OUT OF OR IN CONNECTION WITH THE
+    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE   SOFTWARE.\n\n---\n\nJson.NET for
+    Unity\n\nThe MIT License (MIT)\r\nCopyright (c) 2019 Kalle Jillheden (jilleJr)\r\nPermission
+    is hereby granted, free of charge, to any person obtaining a copy of this software
+    and associated documentation files (the \"Software\"), to deal in the Software
+    without restriction, including without limitation the rights to use, copy, modify,
+    merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+    to permit persons to whom the Software is furnished to do so, subject to the
+    following conditions:\r\nThe above copyright notice and this permission notice
+    shall be included in all copies or substantial portions of the Software.\r\nTHE
+    SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+    INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+    PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+    HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+    OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n\n---\n\nJson.NET\n\nThe
+    MIT License (MIT)\r\nCopyright (c) 2007 James Newton-King\r\nPermission is hereby
     granted, free of charge, to any person obtaining a copy of this software and
     associated documentation files (the \"Software\"), to deal in the Software without
     restriction, including without limitation the rights to use, copy, modify, merge,
@@ -241,7 +245,21 @@ MonoBehaviour:
     PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
     BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
     CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
-    OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+    OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n\n---\n\nWebGLInput\r\n\nMIT License\r\n\r\nCopyright
+    (c) 2019 kou_yeung\r\n\r\nPermission is hereby granted, free of charge, to any
+    person obtaining a copy\r\nof this software and associated documentation files
+    (the \"Software\"), to deal\r\nin the Software without restriction, including
+    without limitation the rights\r\nto use, copy, modify, merge, publish, distribute,
+    sublicense, and/or sell\r\ncopies of the Software, and to permit persons to whom
+    the Software is\r\nfurnished to do so, subject to the following conditions:\r\n\r\nThe
+    above copyright notice and this permission notice shall be included in all\r\ncopies
+    or substantial portions of the Software.\r\n\r\nTHE SOFTWARE IS PROVIDED \"AS
+    IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\r\nIMPLIED, INCLUDING BUT NOT
+    LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\r\nFITNESS FOR A PARTICULAR PURPOSE
+    AND NONINFRINGEMENT. IN NO EVENT SHALL THE\r\nAUTHORS OR COPYRIGHT HOLDERS BE
+    LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\r\nLIABILITY, WHETHER IN AN ACTION OF
+    CONTRACT, TORT OR OTHERWISE, ARISING FROM,\r\nOUT OF OR IN CONNECTION WITH THE
+    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\r\nSOFTWARE.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06353a91c569c2a43a629aa5f070acd2, type: 2}
   m_sharedMaterial: {fileID: -5584412863871627711, guid: 06353a91c569c2a43a629aa5f070acd2, type: 2}
@@ -304,12 +322,26 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: -16.513115}
+  m_margin: {x: 0, y: 0, z: 25, w: -16.513115}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8316670630617257481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5400430176787140352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &5400430176884036020
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,6 +370,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5400430176903238500}
   m_RootOrder: 0
@@ -411,11 +444,12 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5400430176884036023}
   - {fileID: 5400430178382169312}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -451,6 +485,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5400430178157543267}
   m_Father: {fileID: 5400430178382169312}
@@ -542,8 +577,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5400430177693146222}
   m_HandleRect: {fileID: 5400430177693146223}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 0.99999994
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -576,6 +611,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5400430178382169312}
   m_RootOrder: 3
@@ -651,6 +687,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5400430178248917833}
   m_RootOrder: 0
@@ -727,6 +764,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5400430178248917833}
   m_Father: {fileID: 5400430178382169312}
@@ -850,6 +888,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5400430176787140355}
   m_Father: {fileID: 5400430177557761120}
@@ -889,6 +928,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5400430176546385775}
   m_Father: {fileID: 5400430178382169312}
@@ -1022,6 +1062,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5400430177456253835}
   m_Father: {fileID: 5400430178382169312}
@@ -1111,6 +1152,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5400430178157543267}
   m_RootOrder: 0
@@ -1184,6 +1226,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5400430177693146223}
   m_Father: {fileID: 5400430177037907964}
@@ -1220,6 +1263,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5400430177096836133}
   m_Father: {fileID: 5400430177365737970}
@@ -1259,6 +1303,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5400430177557761120}
   - {fileID: 5400430177037907964}
